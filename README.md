@@ -2,9 +2,12 @@
 
 This outputs an Ethereum address for a given AWS KMS key.
 
-The easiest way to run this is via ts-node. The following environment variables are required:
-
 ```
+# First, install dependencies
+yarn
+
+# Now set up all the required environment variables...
+
 # The access ID of the user to use for the API request
 export ACCESS_KEY_ID=<redacted>
 
@@ -19,5 +22,6 @@ export REGION=<redacted>
 # e2788a15-b8ef-4690-8fb1-f3613306ac99
 export KEY_ID=<redacted>
 
+# Run it!
 ts-node index.ts
 ```
