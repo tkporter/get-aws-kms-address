@@ -32,11 +32,22 @@ function getEthereumAddress(publicKey: Buffer): string {
 }
 
 async function fetchAddressFromAws() {
+  const accessKeyId = process.env.ACCESS_KEY_ID
+  const secretAccessKey = process.env.SECRET_ACCESS_KEY
+
+  if (!accessKeyId) {
+    throw new Error("No ACCESS_KEY_ID set")
+  }
+
+  if (!secretAccessKey) {
+    throw new Error("No SECRET_ACCESS_KEY set")
+  }
+
   const client = new KMSClient({
     region: process.env.REGION,
     credentials: {
-      accessKeyId: process.env.ACCESS_KEY_ID,
-      secretAccessKey: process.env.SECRET_ACCESS_KEY
+      accessKeyId,
+      secretAccessKey
     }
   });
 
